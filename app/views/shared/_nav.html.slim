@@ -1,0 +1,11 @@
+nav
+  .nav-wrapper.container
+    = link_to 'Viserys', root_path, class: 'brand-logo'
+    ul#nav-mobile.right.side-nav
+      li= link_to 'Дневники', posts_path
+      - unless current_user
+        li= link_to 'Войти', new_user_session_path
+        li= link_to 'Регистрация', new_user_registration_path
+      - else
+        li= link_to 'Настройки', edit_user_registration_path
+        li= link_to 'Выход', destroy_user_session_path, data: {method: :delete}

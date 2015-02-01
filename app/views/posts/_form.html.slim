@@ -1,0 +1,14 @@
+= simple_form_for @post do |f|
+  = f.error_notification
+
+  .row
+    .col.s6
+      = f.input_field :created_at
+    .col.s6
+      = f.input_field :status, as: :select, collection: available_post_types.invert, label: 'Что пишем?', include_blank: false
+
+  .col.s12.input-field
+    = f.label :content, 'Контент'
+    = f.input_field :content, class: 'materialize-textarea', rows: 10
+
+  = f.button :submit, 'Сохранить запись'
