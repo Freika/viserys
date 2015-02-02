@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '>= 1.7.0'
-
 gem 'rails', '4.2.0'
 gem 'pg'
 
@@ -16,10 +14,6 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'russian'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-materialize'
-end
 
 group :development, :test do
   gem 'byebug'
