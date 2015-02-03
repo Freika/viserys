@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require underscore
 //= require bootstrap
+//= require underscore
 //= require angular
+//= require_tree .
