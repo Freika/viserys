@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'User', at: '/auth'
 
-  root 'main#index'
+  root 'application#index'
+  get '*path' => 'application#index'
+
   resources :posts
-  devise_for :users
 end

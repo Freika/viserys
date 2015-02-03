@@ -2,12 +2,11 @@ source 'https://rubygems.org'
 
 gem 'bundler', '>= 1.7.0'
 
+gem 'bootstrap-sass'
+gem 'bower-rails'
+gem 'angular-rails-templates'
+gem 'devise_token_auth'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap'
-  gem 'rails-assets-angular'
-  gem 'rails-assets-underscore'
-end
 
 gem 'rails', '4.2.0'
 gem 'pg'
