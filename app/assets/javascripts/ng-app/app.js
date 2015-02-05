@@ -8,6 +8,9 @@ angular.module('AngularRails', [
     .when('/', {
       templateUrl: 'home.html',
       controller: 'HomeCtrl'
-    });
-  // $locationProvider.html5Mode(true);
+    })
+    .when('/sign_in', {
+      templateUrl: 'views/user_sessions/new.html',
+      controller: 'UserSessionsCtrl'
+     });
 });
