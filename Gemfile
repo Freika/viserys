@@ -5,7 +5,6 @@ gem 'bundler', '>= 1.7.0'
 gem 'bootstrap-sass'
 gem 'bower-rails'
 gem 'angular-rails-templates'
-gem 'devise_token_auth'
 
 gem 'rails', '4.2.0'
 gem 'pg'
