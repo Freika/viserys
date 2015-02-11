@@ -9,6 +9,7 @@
 
   .col-sm-12
     = f.label :content, 'Контент'
-    = f.input_field :content, class: 'materialize-textarea', rows: 10
+    br
+    = f.input_field :content, rows: 10
 
   = f.button :submit, 'Сохранить запись'
