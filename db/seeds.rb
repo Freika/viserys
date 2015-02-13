@@ -15,9 +15,10 @@ u.save!
     status = 'yearly'
   end
 
-  Post.create(content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, non.',
-                status: status,
-                user: User.first,
-                created_at: date,
-                updated_at: date)
+  Post.create(content: 'Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Impedit, non.',
+              status: status,
+              user: User.first,
+              created_at: date,
+              updated_at: date)
 end
