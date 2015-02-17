@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! if Rails.env.production?
+  before_action :authenticate_user!
 
   def index
     @posts = current_user.posts.order(created_at: :desc)
@@ -48,6 +48,13 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def month
+    year  = params[:year]
+    month = params[:month]
+    this_month = Time.new(year, month).to_date
+    @posts = current_user.posts.where(created_at: this_month.beginning_of_month..this_month.end_of_month)
   end
 
   private
