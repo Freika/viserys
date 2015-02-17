@@ -19,6 +19,6 @@ u.save!
                 consectetur adipisicing elit. Impedit, non.',
               status: status,
               user: User.first,
-              created_at: date,
-              updated_at: date)
+              created_at: date - 5.hours,
+              updated_at: date - 5.hours)
 end

@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! if Rails.env.production?
+  before_action :authenticate_user!
 
   def index
-    @posts = current_user.posts.order(created_at: :desc)
+    if params[:year] && params[:month]
+      @posts = current_user.posts.month(params[:month], params[:year])
+    elsif params[:year] && params[:week]
+      @posts = current_user.posts.week(params[:week], params[:year])
+    else
+      @posts = current_user.posts.order(created_at: :desc)
+    end
   end
 
   def show
