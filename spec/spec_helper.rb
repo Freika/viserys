@@ -13,6 +13,19 @@ Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   config.before(:each) do
     Timecop.return
   end
@@ -20,4 +33,6 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
   config.include FactoryGirl::Syntax::Methods
+
+  config.include PostsHelpers
 end
