@@ -28,7 +28,7 @@ group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
   gem 'pry'
-  gem 'rspec-rails', '~> 2.14.0'
+  gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'guard-rspec', require: false
 end
