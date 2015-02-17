@@ -1,5 +1,5 @@
 .center-align
-  = link_to 'Новая запись', new_post_path, class: 'btn waves-effect'
+  = link_to 'Новая запись', new_post_path, class: 'btn btn-default'
 
 - @posts.each do |post|
   = render 'post', post: post
