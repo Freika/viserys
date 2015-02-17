@@ -2,11 +2,11 @@ module ApplicationHelper
 
   def nice_russian_date(date)
     if date == Time.zone.today
-      "сегодня, #{Russian::strftime(date, '%e %B')}"
+      "Сегодня, #{Russian::strftime(date, '%e %B %A')}"
     elsif date == Time.zone.yesterday
-      "вчера, #{Russian::strftime(date, '%e %B')}"
+      "Вчера, #{Russian::strftime(date, '%e %B %A')}"
     else
-      Russian::strftime(date, '%e %B %Y')
+      Russian::strftime(date, '%e %B %Y, %A')
     end
   end
 

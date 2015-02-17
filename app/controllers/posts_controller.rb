@@ -54,7 +54,14 @@ class PostsController < ApplicationController
     year  = params[:year]
     month = params[:month]
     this_month = Time.new(year, month).to_date
-    @posts = current_user.posts.where(created_at: this_month.beginning_of_month..this_month.end_of_month)
+    @posts = current_user.posts.where(created_at: this_month.beginning_of_month..this_month.end_of_month).order(created_at: :desc)
+  end
+
+  def week
+    year = params[:year].to_i
+    week = params[:week].to_i
+    this_week = Date.commercial(year, week)
+    @posts = current_user.posts.where(created_at: this_week.beginning_of_week(:monday)..this_week.end_of_week(:monday)).order(created_at: :desc)
   end
 
   private
