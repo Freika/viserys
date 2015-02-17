@@ -35,4 +35,5 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.include PostsHelpers
+  config.include UsersHelpers
 end
