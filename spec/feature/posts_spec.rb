@@ -18,7 +18,7 @@ describe 'Posts' do
 
     sign_in_with(user.email, user.password)
     populate_year_of_posts
-    visit "/weeks/#{year}/#{week}"
+    visit "/week/#{year}/#{week}"
 
     expect(page).to have_selector('h4', count: 7)
   end
@@ -30,7 +30,7 @@ describe 'Posts' do
 
     sign_in_with(user.email, user.password)
     populate_year_of_posts
-    visit "/months/#{year}/#{month}"
+    visit "/month/#{year}/#{month}"
 
     expect(page).to have_content('понедельник')
     expect(page).to have_content('воскресенье')

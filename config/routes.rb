@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'main#index'
   resources :posts
-  get '/months/:year/:month', to: 'posts#index'
-  get '/weeks/:year/:week', to: 'posts#index'
+  get '/month/:year/:month', to: 'posts#index'
+  get '/week/:year/:week', to: 'posts#index'
+  get '/months/:year', to: 'posts#months'
 end

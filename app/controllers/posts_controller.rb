@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     elsif params[:year] && params[:week]
       @posts = current_user.posts.week(params[:week], params[:year])
     else
-      @posts = current_user.posts.order(created_at: :desc)
+      @posts = current_user.posts.order(created_at: :desc).first(7)
     end
   end
 
@@ -54,6 +54,11 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def months
+    @year = params[:year]
+    @months = (1..12)
   end
 
   private

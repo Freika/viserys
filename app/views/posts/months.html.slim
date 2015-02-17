@@ -1,0 +1,8 @@
+h1= "Месяцы #{@year}"
+
+ul
+- @months.each do |month|
+  - if current_user.posts.month(month, @year).present?
+    li= link_to Russian::t(Date::MONTHNAMES[month]), "/month/#{@year}/#{month}"
+  - else
+    li= Russian::t(Date::MONTHNAMES[month])
