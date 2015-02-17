@@ -28,4 +28,15 @@ group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
   gem 'pry'
+  gem 'rspec-rails', '~> 2.14.0'
+  gem 'factory_girl_rails', '~> 4.4.0'
+  gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'capybara', '~> 2.4.0'
+  gem 'capybara-webkit', '~> 1.3.0'
+  gem 'launchy', '~> 2.4'
+  gem 'database_cleaner', '~> 1.3'
+  gem 'timecop', '~> 0.3.5'
 end
