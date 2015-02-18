@@ -11,4 +11,9 @@ class Post < ActiveRecord::Base
     where(created_at: this_month.beginning_of_month..this_month.end_of_month).order(created_at: :desc)
   end
 
+  def self.year(year)
+    this_year = Date.new(year)
+    where(created_at: this_year.beginning_of_year..this_year.end_of_year).order(created_at: :desc)
+  end
+
 end

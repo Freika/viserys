@@ -1,7 +1,12 @@
 h1= "Месяцы #{@year}"
 
-- if current_user.posts.where('created_at >= ? and created_at <= ?', Time.mktime((@year - 1), 1), Time.mktime((@year - 1), 12))
-  = link_to (@year - 1) , months_path(@year - 1)
+- if current_user.posts.year(@year - 1).count > 0
+  .text-left
+    = link_to "← Записи #{(@year - 1)} года" , months_path(@year - 1)
+
+- if current_user.posts.year(@year + 1).count > 0
+  .text-right
+    = link_to "Записи #{(@year + 1)} года →" , months_path(@year + 1)
 
 ul
 - @months.each do |month|
