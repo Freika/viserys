@@ -1,16 +1,11 @@
 h1= "Месяцы #{@year}"
 
-- if current_user.posts.year(@year - 1).count > 0
-  .text-left
-    = link_to "← Записи #{(@year - 1)} года" , months_path(@year - 1)
+.text-left
+  = to_prev_year_months
 
-- if current_user.posts.year(@year + 1).count > 0
-  .text-right
-    = link_to "Записи #{(@year + 1)} года →" , months_path(@year + 1)
+.text-right
+  = to_next_year_months
 
 ul
-- @months.each do |month|
-  - if current_user.posts.month(month, @year).present?
-    li= link_to Russian::t(Date::MONTHNAMES[month]), "/month/#{@year}/#{month}"
-  - else
-    li= Russian::t(Date::MONTHNAMES[month])
+  - (1..12).each do |month_number|
+    li= link_to_month(month_number)

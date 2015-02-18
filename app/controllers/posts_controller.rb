@@ -58,7 +58,6 @@ class PostsController < ApplicationController
 
   def months
     @year = params[:year].to_i
-    @months = (1..12)
   end
 
   private
