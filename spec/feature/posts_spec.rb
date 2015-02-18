@@ -14,7 +14,7 @@ describe 'Posts' do
 
   it 'shows seven posts when looking for previous week' do
     year = Date.today.year
-    week = (Time.now.strftime('%W').to_i) - 1
+    week = Date.today.cweek - 1
 
     sign_in_with(user.email, user.password)
     populate_year_of_posts

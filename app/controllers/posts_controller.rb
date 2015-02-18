@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   def index
     if params[:year] && params[:month]
-      @posts = current_user.posts.month(params[:month], params[:year])
+      @posts = current_user.posts.month(params[:year], params[:month])
     elsif params[:year] && params[:week]
-      @posts = current_user.posts.week(params[:week], params[:year])
+      @posts = current_user.posts.week(params[:year], params[:week])
     else
       @posts = current_user.posts.order(created_at: :desc).first(7)
     end
@@ -57,6 +57,10 @@ class PostsController < ApplicationController
   end
 
   def months
+    @year = params[:year].to_i
+  end
+
+  def weeks
     @year = params[:year].to_i
   end
 
