@@ -6,6 +6,6 @@ h1= "Недели #{@year} года"
 .text-right
   = to_next_year("weeks")
 
-ul
+ul.weeks
   - (01..52).each do |week_number|
     li= link_to_week(week_number)

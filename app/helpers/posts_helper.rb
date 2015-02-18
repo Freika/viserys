@@ -24,6 +24,7 @@ module PostsHelper
     this_week = Date.commercial(@year, week_number.to_i)
     text = "С #{Russian::strftime((this_week.beginning_of_week), '%e %B %Y')} \
            по #{Russian::strftime((this_week.end_of_week), '%e %B %Y')}"
+
     if current_user.posts.week(@year, week_number).present?
       link_to text, week_path(@year, week_number)
     else

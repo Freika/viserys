@@ -1,11 +1,11 @@
 h1= "Месяцы #{@year} года"
 
 .text-left
-  = to_prev_year_months
+  = to_prev_year("months")
 
 .text-right
-  = to_next_year_months
+  = to_next_year("months")
 
-ul
+ul.months
   - (1..12).each do |month_number|
     li= link_to_month(month_number)
