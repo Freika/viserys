@@ -1,6 +1,18 @@
 .text-center
   = link_to 'Новая запись', new_post_path, class: 'btn btn-default'
 
-- @posts.each do |post|
-  = render 'post', post: post
+.col-sm-10
+  - @posts.each do |post|
+    = render 'post', post: post
 
+.col-sm-2
+  table#graph
+    - Post.graph.each_slice(7) do |day|
+      tr
+      - day.each do |day|
+        - if day.last > 0
+          td.graph-cell-2
+            = link_to '', '', data: { toggle: 'tooltip', placement: 'top'}, title: cell_tooltip(day)
+        - else
+          td.graph-cell-0
+            = link_to '', '', data: { toggle: 'tooltip', placement: 'top'}, title: cell_tooltip(day)

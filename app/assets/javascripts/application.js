@@ -6,3 +6,7 @@
 //= require angular-rails-templates
 //= require_tree ../templates
 //= require_tree .
+
+$( document ).ready(function() {
+  $('td a').tooltip();
+});

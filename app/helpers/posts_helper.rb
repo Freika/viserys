@@ -32,4 +32,8 @@ module PostsHelper
     end
   end
 
+  def cell_tooltip(date)
+    nice_russian_date(date.first)
+  end
+
 end
