@@ -2,12 +2,11 @@ require 'spec_helper'
 
 describe 'Posts' do
   let(:user) { create(:user) }
+  let(:year) { Date.today.year }
+  let(:month) { Date.today.month - 1 }
+  let(:week) { Date.today.cweek - 1 }
 
   before do
-    @year = Date.today.year
-    @month = Date.today.month - 1
-    @week = Date.today.cweek - 1
-
     sign_in_with(user.email, user.password)
     populate_year_of_posts
   end
@@ -20,15 +19,15 @@ describe 'Posts' do
   end
 
   it 'shows seven posts when looking for previous week' do
-    visit week_path(@year, @week)
+    visit week_path(year, week)
 
     expect(page).to have_selector('h4', count: 7)
   end
 
   it 'shows all days of previous month' do
-    days = Time.days_in_month(@month, @year)
+    days = Time.days_in_month(month, year)
 
-    visit month_path(@year, @month)
+    visit month_path(year, month)
 
     expect(page).to have_content('понедельник')
     expect(page).to have_content('воскресенье')
@@ -39,7 +38,7 @@ describe 'Posts' do
     months = %w(Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь
                 Ноябрь Декабрь)
 
-    visit months_path(@year)
+    visit months_path(year)
 
     months.each do |month|
       expect(page).to have_content(month)
@@ -51,26 +50,34 @@ describe 'Posts' do
   end
 
   it 'show all weeks in weeks\' page' do
-    visit weeks_path(@year)
+    visit weeks_path(year)
 
     within 'ul.weeks' do
       expect(page).to have_selector('a', count: Date.today.cweek)
     end
   end
 
-  it 'shows link to previous year in months and weeks pages' do
-    visit months_path(@year)
-    expect(page).to have_content("Записи #{@year - 1} года")
+  it 'shows link to next year on months page' do
+    visit months_path(year)
 
-    visit weeks_path(@year)
-    expect(page).to have_content("Записи #{@year - 1} года")
+    expect(page).to have_content("Записи #{year - 1} года")
   end
 
-  it 'shows link to previous year in months and weeks pages' do
-    visit months_path(@year - 1)
-    expect(page).to have_content("Записи #{@year} года")
+  it 'shows link to next year on weeks page' do
+    visit weeks_path(year)
 
-    visit weeks_path(@year - 1)
-    expect(page).to have_content("Записи #{@year} года")
+    expect(page).to have_content("Записи #{year - 1} года")
+  end
+
+  it 'shows link to previous year on months page' do
+    visit months_path(year - 1)
+
+    expect(page).to have_content("Записи #{year} года")
+  end
+
+  it 'shows link to previous year on weeks page' do
+    visit weeks_path(year - 1)
+
+    expect(page).to have_content("Записи #{year} года")
   end
 end
