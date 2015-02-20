@@ -36,4 +36,25 @@ module PostsHelper
     nice_russian_date(date.first)
   end
 
+  def graph(user)
+    progress_days = count_days_with_posts(user)
+
+    calendar = {}
+    last_year_beautiful = Date.parse((1.year.ago).strftime("%Y-%m-%d"))..Date.parse(Date.today.strftime("%Y-%m-%d"))
+
+    last_year_beautiful.each do |day|
+      val = progress_days.keys.include?(day) ? progress_days[day] : 0
+      calendar[day] = val
+    end
+    return calendar.to_a.reverse.to_h
+  end
+
+  def count_days_with_posts(user)
+    last_year = (1.year.ago).beginning_of_day..Date.today.end_of_day
+
+    # hash of arrays looks like [date, how_many_posts_on_this_date]
+    posts_on_date = user.posts.where(created_at: last_year).group('date(created_at)').count
+  end
+
+
 end

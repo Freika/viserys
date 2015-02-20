@@ -7,7 +7,7 @@
 
 .col-sm-2
   table#graph
-    - Post.graph(current_user).each_slice(7) do |day|
+    - graph(current_user).each_slice(7) do |day|
       tr
       - day.each do |day|
         - if day.last > 0
