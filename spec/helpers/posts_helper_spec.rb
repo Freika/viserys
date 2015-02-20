@@ -25,7 +25,7 @@ describe PostsHelper do
       create(:post, user_id: user.id, created_at: time + 2.hours)
 
       Timecop.travel(time + 1.day)
-      create(:post, user_id: user.id, created_at: time + 32.hours)
+      create(:post, user_id: user.id, created_at: time + 1.day)
 
       expect(helper.graph(user)[time.to_date]).to eq 1
       expect(helper.graph(user)[(time + 1.day).to_date]).to eq 1
