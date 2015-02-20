@@ -9,7 +9,7 @@ describe 'Graph' do
 
     visit posts_path
 
-    expect(page).to have_selector('.graph-cell-2')
+    expect(page).to have_selector('.graph-cell-1')
   end
 
   it 'shows dark squares on posts#show page' do
@@ -18,7 +18,7 @@ describe 'Graph' do
 
     visit post_path(post)
 
-    expect(page).to have_selector('.graph-cell-2')
+    expect(page).to have_selector('.graph-cell-1')
   end
 
 end
