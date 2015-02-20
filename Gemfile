@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'slim-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'bootstrap-datepicker-rails'
 
 gem 'russian'
 

@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  before_save :set_created_at
 
   def self.week(year, week)
     this_week = Date.commercial(year.to_i, week.to_i).to_time
@@ -16,8 +17,8 @@ class Post < ActiveRecord::Base
     where(created_at: this_year.beginning_of_year..this_year.end_of_year).order(created_at: :desc)
   end
 
-  def self.graph
-    progress_days = Post.count_days_with_posts
+  def self.graph(user)
+    progress_days = Post.count_days_with_posts(user)
 
     calendar = {}
     last_year_beautiful = Date.parse((1.year.ago).strftime("%Y-%m-%d"))..Date.parse(Date.today.strftime("%Y-%m-%d"))
@@ -29,11 +30,20 @@ class Post < ActiveRecord::Base
     return calendar.to_a.reverse.to_h
   end
 
-  def self.count_days_with_posts
+  def self.count_days_with_posts(user)
     last_year = (1.year.ago).beginning_of_day..Date.today.end_of_day
 
     # hash of arrays looks like [date, how_many_posts_on_this_date]
-    posts_on_date = Post.where(created_at: last_year).group('date(created_at)').count
+    posts_on_date = user.posts.where(created_at: last_year).group('date(created_at)').count
+  end
+
+  private
+
+  def set_created_at
+    now = Time.current
+    self.created_at = self.created_at.change(hour: now.hour,
+                                             min: now.min,
+                                             sec: now.sec)
   end
 
 end

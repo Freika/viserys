@@ -1,15 +1,17 @@
 = simple_form_for @post do |f|
   = f.error_notification
 
-  .row
+  .form-inputs
     .col-sm-6
-      = f.input_field :created_at
+      = f.input :created_at, as: :string, label: 'Какому дню подводим итоги?'
+      br
     .col-sm-6
-      = f.input_field :status, as: :select, collection: available_post_types.invert, label: 'Что пишем?', include_blank: false
+      = f.input :status, collection: available_post_types.invert, label: 'Что пишем?', include_blank: false
+      br
+    .col-sm-12
+      = f.input :content, label: 'Как прошел день?', input_html: { rows: 10 }
 
   .col-sm-12
-    = f.label :content, 'Контент'
-    br
-    = f.input_field :content, rows: 10
-
-  = f.button :submit, 'Сохранить запись'
+    .form-actions
+      br
+      = f.button :submit, 'Сохранить', class: 'btn btn-success pull-right'
