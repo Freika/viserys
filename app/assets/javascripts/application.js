@@ -9,15 +9,3 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
-
-$( document ).ready(function() {
-  $('td a').tooltip();
-
-  $('#post_created_at').datepicker({
-    todayBtn: "linked",
-    clearBtn: true,
-    language: "ru",
-    autoclose: true,
-    todayHighlight: true
-  });
-});

@@ -56,5 +56,9 @@ module PostsHelper
     posts_on_date = user.posts.where(created_at: last_year).group('date(created_at)').count
   end
 
+  def graph_square(day)
+    link_to '', '', data: { toggle: 'tooltip', placement: 'top'}, title: cell_tooltip(day)
+  end
+
 
 end
