@@ -17,7 +17,6 @@ class Post < ActiveRecord::Base
     where(created_at: this_year.beginning_of_year..this_year.end_of_year).order(created_at: :desc)
   end
 
-
   private
 
   def set_created_at

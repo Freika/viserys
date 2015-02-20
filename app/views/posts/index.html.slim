@@ -6,13 +6,4 @@
     = render 'post', post: post
 
 .col-sm-2
-  table#graph
-    - graph(current_user).each_slice(7) do |day|
-      tr
-      - day.each do |day|
-        - if day.last > 0
-          td.graph-cell-2
-            = link_to '', '', data: { toggle: 'tooltip', placement: 'top'}, title: cell_tooltip(day)
-        - else
-          td.graph-cell-0
-            = link_to '', '', data: { toggle: 'tooltip', placement: 'top'}, title: cell_tooltip(day)
+  = render 'graph'
