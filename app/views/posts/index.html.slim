@@ -1,6 +1,9 @@
 .text-center
   = link_to 'Новая запись', new_post_path, class: 'btn btn-default'
 
-- @posts.each do |post|
-  = render 'post', post: post
+.col-sm-10
+  - @posts.each do |post|
+    = render 'post', post: post
 
+.col-sm-2
+  = render 'graph'

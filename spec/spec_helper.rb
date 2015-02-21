@@ -34,6 +34,8 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include FactoryGirl::Syntax::Methods
 
+  config.infer_spec_type_from_file_location!
+
   config.include PostsHelpers
   config.include UsersHelpers
 end

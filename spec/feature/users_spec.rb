@@ -8,4 +8,5 @@ describe 'User' do
 
     expect(page).to have_content 'Дневник'
   end
+
 end
