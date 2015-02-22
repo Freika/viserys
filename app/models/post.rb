@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
   belongs_to :user
   before_save :set_created_at
 
+  POST_STATUSES = { daily: 'Ежедневный', weekly: 'Еженедельный',
+                    monthly: 'Ежемесячный', yearly: 'Ежегодный' }
+
   def self.week(year, week)
     this_week = Date.commercial(year.to_i, week.to_i).to_time
     where(created_at: this_week.beginning_of_week..this_week.end_of_week).order(created_at: :desc)
