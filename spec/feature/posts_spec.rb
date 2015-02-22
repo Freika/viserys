@@ -4,7 +4,7 @@ describe 'Posts' do
   let(:user) { create(:user) }
   let(:year) { Date.today.year }
   let(:month) { Date.today.month - 1 }
-  let(:week) { Date.today.cweek - 1 }
+  let(:week) { Date.today.cweek - 2 }
 
   before do
     sign_in_with(user.email, user.password)

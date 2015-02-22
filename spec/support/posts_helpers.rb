@@ -7,6 +7,8 @@ module PostsHelpers
         status = 'weekly'
       elsif date.month == 12 && date.day == 30
         status = 'yearly'
+      else
+        status = 'daily'
       end
 
       Post.create(content: 'Lorem ipsum dolor sit amet,
