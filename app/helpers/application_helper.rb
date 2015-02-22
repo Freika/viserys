@@ -42,4 +42,17 @@ module ApplicationHelper
     options
   end
 
+  def nice_russian_status(status)
+    case status
+    when 'daily'
+      'Итоги дня'
+    when 'weekly'
+      'Итоги недели'
+    when 'monthly'
+      'Итоги месяца'
+    when 'yearly'
+      'Итоги года'
+    end
+  end
+
 end

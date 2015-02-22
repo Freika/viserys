@@ -2,5 +2,5 @@
     h4= link_to nice_russian_date(post.created_at), post
     small=> link_to '[Удалить]', post, method: :delete, data: { confirm: 'Вот так запросто удалить целый день? ໒( •́ ‸ •̀ )७' }
     small=> link_to '[Редактировать]', edit_post_path(post)
-    span.badge= post.status
+    span.badge= nice_russian_status(post.status)
     .flow-text= post.content

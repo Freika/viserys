@@ -1,9 +1,12 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   before_save :set_created_at
+  validates :status, inclusion: { in: %w(daily weekly monthly yearly) }
 
-  POST_STATUSES = { daily: 'Ежедневный', weekly: 'Еженедельный',
-                    monthly: 'Ежемесячный', yearly: 'Ежегодный' }
+  scope :daily, ->{ where(status: 'daily') }
+  scope :weekly, ->{ where(status: 'weekly') }
+  scope :monthly, ->{ where(status: 'monthly') }
+  scope :yearly, ->{ where(status: 'yearly') }
 
   def self.week(year, week)
     this_week = Date.commercial(year.to_i, week.to_i).to_time
