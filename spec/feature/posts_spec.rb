@@ -84,11 +84,7 @@ describe 'Posts' do
   it 'shows only weekly posts if such status chosen' do
     visit month_path(year, month)
     date = Date.new(year, month)
-    fridays = 0
-
-    (date.beginning_of_month..date.end_of_month).each do |day|
-      fridays += 1 if day.to_datetime.wday == 6
-    end
+    fridays = (date.beginning_of_month..date.end_of_month).reject { |d| d.to_datetime.wday != 6 }.count
 
     click_on 'Показать еженедельные записи'
 
