@@ -53,7 +53,7 @@ describe 'Posts' do
     visit weeks_path(year)
 
     within 'ul.weeks' do
-      expect(page).to have_selector('a', count: Date.today.cweek)
+      expect(page).to have_selector('li', count: 52)
     end
   end
 
