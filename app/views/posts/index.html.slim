@@ -1,5 +1,8 @@
 .text-center
-  = link_to 'Новая запись', new_post_path, class: 'btn btn-default'
+  .btn-group(role='group')
+    = link_to 'Текущий месяц', month_path(Date.today.year, Date.today.month), class: 'btn btn-default'
+    = link_to 'Новая запись', new_post_path, class: 'btn btn-primary'
+    = link_to 'Текущая неделя', week_path(Date.today.year, Date.today.cweek), class: 'btn btn-default'
 
 .col-sm-10
   - @posts.each do |post|
