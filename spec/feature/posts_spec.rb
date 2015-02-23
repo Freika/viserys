@@ -80,4 +80,30 @@ describe 'Posts' do
 
     expect(page).to have_content("Записи #{year} года")
   end
+
+  it 'shows only weekly posts if such status chosen' do
+    visit month_path(year, month)
+    date = Date.new(year, month)
+    fridays = 0
+
+    (date.beginning_of_month..date.end_of_month).each do |day|
+      fridays += 1 if day.to_datetime.wday == 6
+    end
+
+    click_on 'Показать еженедельные записи'
+
+    expect(page).to have_selector('.post', count: fridays)
+    expect(page).to have_content('Итоги недели', count: fridays)
+    expect(page).not_to have_content('Итоги месяца')
+    expect(page).not_to have_content('Итоги дня')
+  end
+
+  it 'shows only monthly posts if such status chosen' do
+    visit month_path(year, month)
+    click_on 'Показать ежемесячные записи'
+
+    expect(page).to have_content('Итоги месяца')
+    expect(page).not_to have_content('Итоги дня')
+    expect(page).not_to have_content('Итоги недели')
+  end
 end
