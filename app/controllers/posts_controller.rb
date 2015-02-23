@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     else
       @posts = current_user.posts.order(created_at: :desc).first(7)
     end
+
+    @posts = @posts.send(params[:status]) if params[:status]
   end
 
   def show

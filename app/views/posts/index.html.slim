@@ -4,6 +4,10 @@
     = link_to 'Новая запись', new_post_path, class: 'btn btn-primary'
     = link_to 'Текущая неделя', week_path(Date.today.year, Date.today.cweek), class: 'btn btn-default'
 
+=> link_to 'Показать еженедельные записи', url_for(status: 'weekly')
+' |
+= link_to 'Показать ежемесячные записи', url_for(status: 'monthly')
+
 .col-sm-10
   - @posts.each do |post|
     = render 'post', post: post
