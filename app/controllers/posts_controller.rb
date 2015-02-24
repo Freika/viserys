@@ -8,7 +8,15 @@ class PostsController < ApplicationController
     elsif params[:year] && params[:week]
       @posts = current_user.posts.week(params[:year], params[:week])
     else
-      @posts = current_user.posts.order(created_at: :desc).first(7)
+      @posts = current_user.posts.order(created_at: :desc).limit(7)
+    end
+
+    if params[:status]
+      if valid_status? params[:status]
+        @posts = @posts.send(params[:status])
+      else
+        redirect_to posts_path, notice: 'Некорректный статус'
+      end
     end
   end
 
@@ -25,51 +33,54 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Запись сохранена!' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to posts_path, notice: 'Запись сохранена!'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Запись обновлена!' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Запись обновлена!'
+    else
+      render :edit
     end
   end
 
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Запись удалена!' }
-      format.json { head :no_content }
-    end
+    redirect_to posts_url, notice: 'Запись удалена!'
+  end
+
+  def years
+    set_year
+    @posts = current_user.posts.yearly
   end
 
   def months
-    @year = params[:year].to_i
+    set_year
   end
 
   def weeks
-    @year = params[:year].to_i
+    set_year
   end
 
   private
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    def post_params
-      params.require(:post).permit(:content, :status, :user_id, :created_at)
-    end
+  def valid_status?(status)
+    ['daily', 'weekly', 'monthly', 'yearly'].include?(status)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:content, :status, :user_id, :created_at)
+  end
+
+  def set_year
+    @year = params[:year].to_i
+  end
 end

@@ -11,3 +11,10 @@ ru:
   October: Октябрь
   November: Ноябрь
   December: Декабрь
+
+  posts:
+    post:
+      daily: Итоги дня
+      weekly: Итоги недели
+      monthly: Итоги месяца
+      yearly: Итоги года

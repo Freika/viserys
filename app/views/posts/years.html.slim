@@ -1,0 +1,7 @@
+h1= "Ежегодные записи"
+
+= link_to 'Показать ежемесячные записи', url_for(status: 'monthly')
+
+ul.years
+  - @posts.each do |post|
+    = render 'post', post: post

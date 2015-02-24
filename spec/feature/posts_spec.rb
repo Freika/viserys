@@ -4,7 +4,7 @@ describe 'Posts' do
   let(:user) { create(:user) }
   let(:year) { Date.today.year }
   let(:month) { Date.today.month - 1 }
-  let(:week) { Date.today.cweek - 1 }
+  let(:week) { Date.today.cweek - 2 }
 
   before do
     sign_in_with(user.email, user.password)
@@ -53,7 +53,7 @@ describe 'Posts' do
     visit weeks_path(year)
 
     within 'ul.weeks' do
-      expect(page).to have_selector('a', count: Date.today.cweek)
+      expect(page).to have_selector('li', count: 52)
     end
   end
 
@@ -79,5 +79,27 @@ describe 'Posts' do
     visit weeks_path(year - 1)
 
     expect(page).to have_content("Записи #{year} года")
+  end
+
+  it 'shows only weekly posts if such status chosen' do
+    visit month_path(year, month)
+    date = Date.new(year, month)
+    fridays = (date.beginning_of_month..date.end_of_month).reject { |d| d.to_datetime.wday != 6 }.count
+
+    click_on 'Показать еженедельные записи'
+
+    expect(page).to have_selector('.post', count: fridays)
+    expect(page).to have_content('Итоги недели', count: fridays)
+    expect(page).not_to have_content('Итоги месяца')
+    expect(page).not_to have_content('Итоги дня')
+  end
+
+  it 'shows only monthly posts if such status chosen' do
+    visit month_path(year, month)
+    click_on 'Показать ежемесячные записи'
+
+    expect(page).to have_content('Итоги месяца')
+    expect(page).not_to have_content('Итоги дня')
+    expect(page).not_to have_content('Итоги недели')
   end
 end

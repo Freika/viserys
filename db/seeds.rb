@@ -5,11 +5,12 @@ u = User.new(
     role: 'admin'
 )
 u.save!
+puts 'Admin created'
 
 (1.year.ago.to_date).upto(Date.today) do |date|
   if date.day == 28
     status = 'monthly'
-  elsif date.wday == 6 || date.wday == 0
+  elsif date.wday == 6
     status = 'weekly'
   elsif date.month == 12 && date.day == 30
     status = 'yearly'
@@ -24,3 +25,4 @@ u.save!
               created_at: date - 5.hours,
               updated_at: date - 5.hours)
 end
+puts 'Database populated with posts'

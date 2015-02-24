@@ -3,10 +3,12 @@ module PostsHelpers
     (1.year.ago.to_date).upto(Date.today) do |date|
       if date.day == 28
         status = 'monthly'
-      elsif date.wday == 6 || date.wday == 0
+      elsif date.wday == 6
         status = 'weekly'
       elsif date.month == 12 && date.day == 30
         status = 'yearly'
+      else
+        status = 'daily'
       end
 
       Post.create(content: 'Lorem ipsum dolor sit amet,
