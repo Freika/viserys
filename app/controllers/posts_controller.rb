@@ -58,12 +58,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def years
+    set_year
+    @posts = current_user.posts.yearly
+  end
+
   def months
-    @year = params[:year].to_i
+    set_year
   end
 
   def weeks
-    @year = params[:year].to_i
+    set_year
   end
 
   private
@@ -73,5 +78,9 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:content, :status, :user_id, :created_at)
+    end
+
+    def set_year
+      @year = params[:year].to_i
     end
 end
