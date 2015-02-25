@@ -157,6 +157,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    public_activity (1.4.2)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
@@ -295,6 +300,7 @@ DEPENDENCIES
   launchy (~> 2.4)
   pg
   pry
+  public_activity
   quiet_assets
   rails (= 4.2.0)
   rspec-rails (~> 3.0)

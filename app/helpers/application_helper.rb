@@ -30,21 +30,21 @@ module ApplicationHelper
       options[:yearly] = 'Итоги года'
     end
 
-    if (Time.zone.now.month == 2) && ((25..31).include? Time.zone.now.day)
-      options[:winter] = 'Итоги зимы'
-    end
+    # if (Time.zone.now.month == 2) && ((25..31).include? Time.zone.now.day)
+    #   options[:winter] = 'Итоги зимы'
+    # end
 
-    if (Time.zone.now.month == 5) && ((25..31).include? Time.zone.now.day)
-      options[:spring] = 'Итоги весны'
-    end
+    # if (Time.zone.now.month == 5) && ((25..31).include? Time.zone.now.day)
+    #   options[:spring] = 'Итоги весны'
+    # end
 
-    if (Time.zone.now.month == 8) && ((25..31).include? Time.zone.now.day)
-      options[:summer] = 'Итоги лета'
-    end
+    # if (Time.zone.now.month == 8) && ((25..31).include? Time.zone.now.day)
+    #   options[:summer] = 'Итоги лета'
+    # end
 
-    if (Time.zone.now.month == 11) && ((25..31).include? Time.zone.now.day)
-      options[:autumn] = 'Итоги осени'
-    end
+    # if (Time.zone.now.month == 11) && ((25..31).include? Time.zone.now.day)
+    #   options[:autumn] = 'Итоги осени'
+    # end
     options
   end
 
