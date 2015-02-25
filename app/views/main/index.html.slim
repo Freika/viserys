@@ -1,0 +1,5 @@
+- @news.each do |post|
+  = render 'news/news', post: post
+
+.text-center
+  = will_paginate @news, renderer: BootstrapPagination::Rails, previous_label: 'Назад', next_label: 'Вперед'
