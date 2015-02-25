@@ -1,5 +1,11 @@
 module ApplicationHelper
 
+  def title(value)
+    unless value
+      @title = "#{value} | Ваши сворачивающиеся дневники"
+    end
+  end
+
   def nice_russian_date(date)
     if date == Time.zone.today
       "Сегодня, #{Russian::strftime(date, '%e %B %A')}"
