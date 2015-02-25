@@ -4,11 +4,11 @@ class PostsController < ApplicationController
 
   def index
     if params[:year] && params[:month]
-      @posts = current_user.posts.month(params[:year], params[:month])
+      @posts = current_user.posts.month(params[:year], params[:month]).paginate(page: params[:page], per_page: 7)
     elsif params[:year] && params[:week]
-      @posts = current_user.posts.week(params[:year], params[:week])
+      @posts = current_user.posts.week(params[:year], params[:week]).paginate(page: params[:page], per_page: 7)
     else
-      @posts = current_user.posts.order(created_at: :desc).limit(7)
+      @posts = current_user.posts.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
     end
 
     if params[:status]
@@ -55,7 +55,11 @@ class PostsController < ApplicationController
 
   def years
     set_year
-    @posts = current_user.posts.yearly
+    if params[:status] == 'monthly'
+      @posts = current_user.posts.year(@year).monthly.order(created_at: :desc)
+    else
+      @posts = current_user.posts.yearly.order(created_at: :desc)
+    end
   end
 
   def months

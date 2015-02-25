@@ -4,10 +4,6 @@ describe 'Posts' do
   let(:user) { create(:user) }
   let(:admin) { create(:admin) }
   let(:news) { create(:news) }
-  # before do
-  #   sign_in_with(user.email, user.password)
-  #   populate_year_of_posts
-  # end
 
   it 'cannot be edited by guest' do
     visit edit_news_path(news)

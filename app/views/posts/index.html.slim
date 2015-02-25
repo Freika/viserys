@@ -12,5 +12,8 @@
   - @posts.each do |post|
     = render 'post', post: post
 
+  .text-center
+    = just_paginate(@posts)
+
 .col-sm-2
   = render 'graph'

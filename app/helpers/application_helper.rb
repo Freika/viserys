@@ -51,4 +51,8 @@ module ApplicationHelper
     }[flash_type.to_sym] || flash_type.to_s
   end
 
+  def just_paginate(collection)
+    will_paginate collection, renderer: BootstrapPagination::Rails, previous_label: 'Назад', next_label: 'Вперед'
+  end
+
 end
