@@ -1,0 +1,11 @@
+.col-sm-8
+  h3 Новости обновлений
+  - @news.each do |post|
+    = render 'news/news', post: post
+
+  .text-center
+    = just_paginate(@news)
+
+.col-sm-4
+  h3 Лента
+  .col-sm-12 Пользователь подвел итоги дня в 12:32

@@ -61,6 +61,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -264,6 +265,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (~> 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -278,6 +282,7 @@ DEPENDENCIES
   bower-rails
   bundler (>= 1.7.0)
   byebug
+  cancancan (~> 1.10)
   capybara (~> 2.4.0)
   capybara-webkit (~> 1.3.0)
   coffee-rails (~> 4.1.0)
@@ -301,3 +306,4 @@ DEPENDENCIES
   timecop (~> 0.3.5)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  will_paginate-bootstrap

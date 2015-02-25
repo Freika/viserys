@@ -1,0 +1,7 @@
+.panel.post
+  h4= link_to post.title, post
+  - if can? :manage, post
+    small=> link_to '[Удалить]', post, method: :delete, data: { confirm: 'Удалить новость?' }
+    small=> link_to '[Редактировать]', edit_news_path(post)
+  .date= nice_russian_date(post.created_at)
+  .flow-text= post.content

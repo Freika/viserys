@@ -2,6 +2,12 @@ h1= "Ежегодные записи"
 
 = link_to 'Показать ежемесячные записи', url_for(status: 'monthly')
 
+.text-left
+  = to_prev_year("years")
+
+.text-right
+  = to_next_year("years")
+
 ul.years
   - @posts.each do |post|
     = render 'post', post: post

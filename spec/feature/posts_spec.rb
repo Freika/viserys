@@ -11,6 +11,19 @@ describe 'Posts' do
     populate_year_of_posts
   end
 
+  it 'can be created by user' do
+    visit posts_path
+    click_on 'Новая запись'
+
+    fill_in 'Какому дню подводим итоги?', with: '25.02.2015'
+    select 'Итоги дня', from: 'Что пишем?'
+    fill_in 'Как прошел день?', with: 'lipsum5'
+
+    click_on 'Сохранить'
+
+    expect(page).to have_content 'lipsum5'
+  end
+
   it 'shows all the posts on posts#index' do
     visit posts_path
 
@@ -31,7 +44,7 @@ describe 'Posts' do
 
     expect(page).to have_content('понедельник')
     expect(page).to have_content('воскресенье')
-    expect(page).to have_selector('h4', count: days)
+    expect(page).to have_selector('h4', count: 7)
   end
 
   it 'shows all months in months\' page' do

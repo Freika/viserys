@@ -1,0 +1,6 @@
+h3 Новости
+- @news.each do |post|
+  = render 'news', post: post
+    td = news.title
+
+= link_to 'Добавить новость', new_news_path
