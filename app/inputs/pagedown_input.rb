@@ -1,5 +1,5 @@
 class PagedownInput < SimpleForm::Inputs::TextInput
-  def input
+  def input(wrapper_options)
     out = "<div id=\"wmd-button-bar-#{attribute_name}\"></div>\n"
     out << "#{@builder.text_area(attribute_name, input_html_options.merge(
       { :class => 'wmd-input', :id => "wmd-input-#{attribute_name}"})) }"

@@ -17,7 +17,7 @@ describe 'Posts' do
 
     fill_in 'Какому дню подводим итоги?', with: '25.02.2015'
     select 'Итоги дня', from: 'Что пишем?'
-    fill_in 'Как прошел день?', with: 'lipsum5'
+    fill_in 'wmd-input-content', with: 'lipsum5'
 
     click_on 'Сохранить'
 
