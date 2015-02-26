@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  tracked owner: :user
 
   belongs_to :user
   before_save :set_created_at

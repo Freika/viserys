@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Posts' do
+describe 'News' do
   let(:user) { create(:user) }
   let(:admin) { create(:admin) }
   let(:news) { create(:news) }

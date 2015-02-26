@@ -1,1 +1,5 @@
-= "#{activity.owner.name if activity.owner} подвел " + t(".#{activity.trackable.status}") + " в #{activity.created_at.strftime('%H:%M')}"
+= " подвел "
+- if activity.trackable
+  = t(".#{activity.trackable.status}")
+- else
+  = "итоги в удаленной ныне записи "

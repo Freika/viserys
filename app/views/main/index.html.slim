@@ -20,7 +20,9 @@
   .col-sm-12.activities
     -  @activities.each do |activity|
       .activity.text-center
+        = activity.owner.name if activity.owner
         = render_activity activity
+        = " в #{activity.created_at.strftime('%H:%M')}"
         .text-center
           hr
 
