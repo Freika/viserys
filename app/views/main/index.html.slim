@@ -16,7 +16,16 @@
     = just_paginate(@news)
 
 .col-sm-4
-  h3 Лента
-  .col-sm-12 Пользователь подвел итоги дня в 12:32
+  h3.text-center Лента событий
+  .col-sm-12.activities
+    -  @activities.each do |activity|
+      .activity.text-center
+        = activity.owner.name if activity.owner
+        = render_activity activity
+        = " в #{activity.created_at.strftime('%H:%M')}"
+        .text-center
+          hr
+
+
 
 - title "Сворачивающиеся дневники"

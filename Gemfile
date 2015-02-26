@@ -22,6 +22,7 @@ gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate-bootstrap'
 gem 'cancancan', '~> 1.10'
+gem 'public_activity'
 
 gem 'russian'
 

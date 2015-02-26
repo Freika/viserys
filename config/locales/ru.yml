@@ -18,3 +18,16 @@ ru:
       weekly: Итоги недели
       monthly: Итоги месяца
       yearly: Итоги года
+
+  public_activity:
+    post:
+      create:
+        daily: итоги дня
+        weekly: итоги недели
+        monthly: итоги месяца
+        yearly: итоги года
+      update:
+        daily: итоги дня
+        weekly: итоги недели
+        monthly: итоги месяца
+        yearly: итоги года

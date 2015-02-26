@@ -1,6 +1,10 @@
 class Post < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: :user
+
   belongs_to :user
   before_save :set_created_at
+
   validates :status, inclusion: { in: %w(daily weekly monthly yearly) }
 
   scope :daily, ->{ where(status: 'daily') }
