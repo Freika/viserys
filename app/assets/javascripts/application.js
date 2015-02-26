@@ -9,3 +9,5 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
+//= require pagedown_bootstrap
+//= require pagedown_init

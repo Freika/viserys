@@ -23,6 +23,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'will_paginate-bootstrap'
 gem 'cancancan', '~> 1.10'
 gem 'public_activity'
+gem 'pagedown-bootstrap-rails'
+gem "font-awesome-rails"
+gem 'redcarpet'
 
 gem 'russian'
 

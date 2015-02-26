@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   tracked owner: :user
 
   belongs_to :user
-  before_save :set_created_at
+  # before_save :set_created_at
 
   validates :status, inclusion: { in: %w(daily weekly monthly yearly) }
 
@@ -29,11 +29,11 @@ class Post < ActiveRecord::Base
 
   private
 
-  def set_created_at
-    now = Time.current
-    self.created_at = self.created_at.change(hour: now.hour,
-                                             min: now.min,
-                                             sec: now.sec)
-  end
+  # def set_created_at
+  #   now = Time.current
+  #   self.created_at = self.created_at.change(hour: now.hour,
+  #                                            min: now.min,
+  #                                            sec: now.sec)
+  # end
 
 end

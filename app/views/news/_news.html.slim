@@ -4,4 +4,4 @@
     small=> link_to '[Удалить]', post, method: :delete, data: { confirm: 'Удалить новость?' }
     small=> link_to '[Редактировать]', edit_news_path(post)
   .date= nice_russian_date(post.created_at)
-  .content= post.content
+  .content= markdown post.content
