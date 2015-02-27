@@ -1,8 +1,10 @@
 module ApplicationHelper
 
   def title(value)
-    unless value
-      @title = "#{value} | Ваши сворачивающиеся дневники"
+    if value
+      @title = value
+    else
+      @title = "Сворачивающеся дневники"
     end
   end
 
