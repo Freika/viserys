@@ -11,7 +11,7 @@
 # Если вы используете другую систему управления зависимостями,
 # закомментируйте эту строку.
 require 'bundler/capistrano'
-require "whenever/capistrano"
+# require "whenever/capistrano"
 
 ## Чтобы не хранить database.yml в системе контроля версий, поместите
 ## dayabase.yml в shared-каталог проекта на сервере и раскомментируйте
