@@ -85,8 +85,6 @@ set :repository,    "git@github.com:Freika/viserys.git"
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
-after 'deploy:update_code'
-
 before 'deploy:finalize_update', 'set_current_release'
 task :set_current_release, :roles => :app do
     set :current_release, latest_release
