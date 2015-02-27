@@ -47,3 +47,8 @@ group :test do
   gem 'database_cleaner', '~> 1.3'
   gem 'timecop', '~> 0.3.5'
 end
+
+group :production do
+  gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
+  gem 'unicorn'
+end
