@@ -15,7 +15,6 @@
   .text-center
     = just_paginate(@posts)
 
-.col-sm-2
-  = render 'graph'
+.col-sm-2.graph-wrapper
 
 - title "Сворачивающиеся дневники #{current_user.name.capitalize}"

@@ -70,6 +70,9 @@ class PostsController < ApplicationController
     set_year
   end
 
+  def graph
+  end
+
   private
 
   def valid_status?(status)

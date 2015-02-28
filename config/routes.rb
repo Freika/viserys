@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :news
 
+  get 'graph', to: 'posts#graph'
+
   get '/month/:year/:month', to: 'posts#index', as: :month
   get '/week/:year/:week', to: 'posts#index', as: :week
   get '/years/:year', to: 'posts#years', as: :years
