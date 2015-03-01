@@ -1,1 +1,17 @@
-= render 'graph'
+table#graph
+  - graph(current_user).each_slice(7) do |day|
+    tr
+    - day.each do |day|
+      - case day.last
+      - when 1
+        td.graph-cell-1
+          = graph_square(day)
+      - when 2
+        td.graph-cell-2
+          = graph_square(day)
+      - when 3..100
+        td.graph-cell-3
+          = graph_square(day)
+      - else
+        td.graph-cell-0
+          = graph_square(day)
