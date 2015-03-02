@@ -5,17 +5,21 @@ describe 'News' do
   let(:admin) { create(:admin) }
   let(:news) { create(:news) }
 
-  it 'cannot be edited by guest' do
-    visit edit_news_path(news)
+  before do
+    create(:news)
+  end
 
-    expect(current_path).to eq root_path
+  it 'cannot be edited by guest' do
+    visit root_path
+
+    expect(page).not_to have_content '[Редактировать]'
   end
 
   it 'cannot be edited by user' do
     sign_in_with(user.email, user.password)
-    visit edit_news_path(news)
+    visit root_path
 
-    expect(current_path).to eq root_path
+    expect(page).not_to have_content '[Редактировать]'
   end
 
   pending 'can be edited by admin' do

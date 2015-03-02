@@ -1,5 +1,3 @@
 jQuery ->
-    $('.alert').delay(3000).slideUp()
-    $('.alert').delete
-
-    $('.graph-wrapper').load('/graph #graph')
+    $('.alert.alert-dismissible').delay(6000).slideUp()
+    $('.alert.alert-dismissible').delete

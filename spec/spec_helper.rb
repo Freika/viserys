@@ -12,6 +12,13 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
 Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
+  config.include PostsHelpers
+  config.include UsersHelpers
+  config.include WaitForAjax
+
+  config.include Capybara::DSL
+  config.include Rails.application.routes.url_helpers
+  config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -20,22 +27,12 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    Timecop.return
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
   end
 
-  config.before(:each) do
-    Timecop.return
-  end
-
-  config.include Capybara::DSL
-  config.include Rails.application.routes.url_helpers
-  config.include FactoryGirl::Syntax::Methods
-
   config.infer_spec_type_from_file_location!
-
-  config.include PostsHelpers
-  config.include UsersHelpers
 end
