@@ -10,4 +10,6 @@ $( document ).ready(function() {
   $('.graph-wrapper').load('/graph #graph', function(){
     $('#graph a').tooltip();
   });
+
+  $('img').addClass('img-responsive');
 });
