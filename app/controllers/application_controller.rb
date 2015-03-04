@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
 
+  before_action do
+    ActionMailer::Base.default_url_options = {:host => request.host_with_port}
+  end
+
+
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
