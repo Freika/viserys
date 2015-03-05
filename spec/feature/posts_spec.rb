@@ -15,7 +15,7 @@ describe 'Posts' do
     visit posts_path
     click_on 'Новая запись'
 
-    fill_in 'Какому дню подводим итоги?', with: '25.02.2015'
+    fill_in 'Какому дню подводим итоги?', with: Date.today.strftime('%d.%m.%Y')
     select 'Итоги дня', from: 'Что пишем?'
     fill_in 'wmd-input-content', with: 'lipsum5'
 
@@ -97,6 +97,7 @@ describe 'Posts' do
   pending 'shows only weekly posts if such status chosen' do
     visit month_path(year, month)
     date = Date.new(year, month)
+
     fridays = (date.beginning_of_month..date.end_of_month).reject { |d| d.to_datetime.wday != 6 }.count
 
     click_on 'Показать еженедельные записи'
