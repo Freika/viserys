@@ -7,7 +7,7 @@ describe 'Activity feed' do
     create(:post, user_id: user.id)
     visit root_path
 
-    expect(page).to have_content 'TestUser подвел итоги дня'
+    expect(page).to have_content "#{user.name} подвел итоги дня"
   end
 
   it 'shows update user action' do
@@ -19,7 +19,7 @@ describe 'Activity feed' do
 
     visit root_path
 
-    expect(page).to have_content 'TestUser обновил итоги дня'
+    expect(page).to have_content "#{user.name} обновил итоги дня"
   end
 
   it 'shows delete user action' do
@@ -30,8 +30,8 @@ describe 'Activity feed' do
 
     visit root_path
 
-    expect(page).to have_content 'TestUser удалил запись'
-    expect(page).to have_content 'TestUser подвел итоги в удаленной ныне записи'
+    expect(page).to have_content "#{user.name} удалил запись"
+    expect(page).to have_content "#{user.name} подвел итоги в удаленной ныне записи"
   end
 
 end
