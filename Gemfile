@@ -24,7 +24,7 @@ gem 'will_paginate-bootstrap'
 gem 'cancancan', '~> 1.10'
 gem 'public_activity'
 gem 'pagedown-bootstrap-rails'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'redcarpet'
 
 gem 'russian'
@@ -34,7 +34,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'quiet_assets'
-  gem 'pry'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'guard-rspec', require: false

@@ -40,11 +40,11 @@ module PostsHelper
     progress_days = count_days_with_posts(user)
 
     calendar = {}
-    last_year_beautiful = Date.parse((1.year.ago).strftime("%Y-%m-%d"))..Date.parse(Date.today.strftime("%Y-%m-%d"))
+    last_year_beautiful = 1.year.ago.to_date..Date.today
 
     last_year_beautiful.each do |day|
       val = progress_days.keys.include?(day) ? progress_days[day] : 0
-      calendar[day] = val
+      calendar[day + 1.day] = val
     end
     return calendar.to_a.reverse.to_h
   end
