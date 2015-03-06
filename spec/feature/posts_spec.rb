@@ -116,4 +116,20 @@ describe 'Posts' do
     expect(page).not_to have_content('Итоги дня')
     expect(page).not_to have_content('Итоги недели')
   end
+
+  it 'can be published as public post' do
+    visit posts_path
+    click_on 'Новая запись'
+
+    fill_in 'Какому дню подводим итоги?', with: Date.today.strftime('%d.%m.%Y')
+    select 'Итоги дня', from: 'Что пишем?'
+    fill_in 'wmd-input-content', with: 'lipsum5'
+    check 'post_visible'
+
+    click_on 'Сохранить'
+
+    visit public_posts_path
+
+    expect(page).to have_content 'lipsum5'
+  end
 end
