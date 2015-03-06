@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root 'main#index'
 
-  resources :posts
-  resources :news
+  resources :posts do
+    resources :comments, except: :index
+  end
+  resources :news do
+    resources :comments, except: :index
+  end
 
   get 'graph', to: 'posts#graph'
 
