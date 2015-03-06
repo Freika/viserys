@@ -1,5 +1,5 @@
 .post
-  h4= link_to nice_russian_date(post.created_at), post
+  h4= nice_russian_date(post.created_at)
   => "#{post.user.name.capitalize}:"
   span.badge=> t(post.status)
   .content= markdown post.content
