@@ -12,7 +12,6 @@ describe 'Graph' do
     create(:post, user_id: user.id)
 
     visit posts_path
-    wait_for_ajax
 
     expect(page).to have_selector('.graph-cell-1')
   end
@@ -21,8 +20,7 @@ describe 'Graph' do
     post = create(:post, user_id: user.id)
 
     visit post_path(post)
-    wait_for_ajax
-save_and_open_page
+
     expect(page).to have_selector('.graph-cell-1')
   end
 

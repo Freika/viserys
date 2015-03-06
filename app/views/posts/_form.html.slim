@@ -11,7 +11,8 @@
     .col-sm-12
       = f.input :content, as: :pagedown, label: 'Как прошел день?', input_html: { preview: true, rows: 10 }
 
-  .col-sm-12
-    .form-actions
-      br
-      = f.button :submit, 'Сохранить', class: 'btn btn-success pull-right'
+  .col-sm-6
+    = f.input :visible, label: 'Сделать запись публичной?'
+  .col-sm-6
+    br
+    = f.button :submit, 'Сохранить', class: 'btn btn-success pull-right'

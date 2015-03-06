@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/years/:year', to: 'posts#years', as: :years
   get '/months/:year', to: 'posts#months', as: :months
   get '/weeks/:year', to: 'posts#weeks', as: :weeks
+  get '/public', to: 'main#public_posts', as: :public_posts
 end

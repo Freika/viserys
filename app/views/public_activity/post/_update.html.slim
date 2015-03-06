@@ -1,1 +1,4 @@
-= " обновил " + t(".#{activity.trackable.status}")
+- if activity.trackable
+  = " обновил " + t(".#{activity.trackable.status}")
+- else
+  = " обновил итоги в удаленной ныне записи "

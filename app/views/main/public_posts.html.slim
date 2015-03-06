@@ -1,0 +1,21 @@
+.col-sm-8
+  h3 Открытые записи участников
+  - @posts.each do |post|
+    => render 'public_post', post: post
+    .text-right= post.user.name.capitalize
+    hr
+
+  .text-center
+    = just_paginate(@posts)
+
+.col-sm-4
+  h3.text-center Лента событий
+  .col-sm-12.activities
+    -  @activities.each do |activity|
+      .activity.text-center
+        => activity.owner.name if activity.owner
+        => render_activity activity
+        => "в #{activity.created_at.strftime('%H:%M')}"
+        hr
+
+- title "Открытые записи"

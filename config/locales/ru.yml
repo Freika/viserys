@@ -12,6 +12,11 @@ ru:
   November: Ноябрь
   December: Декабрь
 
+  daily: Итоги дня
+  weekly: Итоги недели
+  monthly: Итоги месяца
+  yearly: Итоги года
+
   posts:
     post:
       daily: Итоги дня

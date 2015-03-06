@@ -84,7 +84,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :status, :user_id, :created_at)
+    params.require(:post).permit(:content, :status, :user_id, :created_at, :visible)
   end
 
   def set_year
