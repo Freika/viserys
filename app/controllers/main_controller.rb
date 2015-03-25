@@ -6,7 +6,7 @@ class MainController < ApplicationController
   end
 
   def public_posts
-    @posts = Post.where(visible: true).paginate(page: params[:page], per_page: 5)
+    @posts = Post.where(visible: true).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
 
     if @posts
       @posts
