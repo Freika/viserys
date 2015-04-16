@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def available_post_types
     options = { daily: 'Итоги дня' }
-    if Time.zone.now.wday == 6 || Time.zone.now.wday == 0
+    if Time.zone.now.wday == 6 || Time.zone.now.wday == 0 || Time.zone.now.wday == 1
       options[:weekly] = 'Итоги недели'
     end
 
