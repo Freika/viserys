@@ -17,8 +17,6 @@ describe 'Posts' do
     visit posts_path
     click_on 'Новая запись'
 
-    fill_in 'Какому дню подводим итоги?', with: Date.today.strftime('%d.%m.%Y')
-    select 'Итоги дня', from: 'Что пишем?'
     fill_in 'wmd-input-content', with: 'lipsum5'
 
     click_on 'Сохранить'
@@ -93,45 +91,5 @@ describe 'Posts' do
     visit weeks_path(year - 1)
 
     expect(page).to have_content("Записи #{year} года")
-  end
-
-  pending 'shows only weekly posts if such status chosen' do
-    skip
-    visit month_path(year, month)
-    date = Date.new(year, month)
-
-    fridays = (date.beginning_of_month..date.end_of_month).reject { |d| d.to_datetime.wday != 6 }.count
-
-    click_on 'Показать еженедельные записи'
-
-    expect(page).to have_selector('.post', count: fridays)
-    expect(page).to have_content('Итоги недели', count: fridays)
-    expect(page).not_to have_content('Итоги месяца')
-    expect(page).not_to have_content('Итоги дня')
-  end
-
-  it 'shows only monthly posts if such status chosen' do
-    visit month_path(year, month)
-    click_on 'Показать ежемесячные записи'
-
-    expect(page).to have_content('Итоги месяца')
-    expect(page).not_to have_content('Итоги дня')
-    expect(page).not_to have_content('Итоги недели')
-  end
-
-  it 'can be published as public post' do
-    visit posts_path
-    click_on 'Новая запись'
-
-    fill_in 'Какому дню подводим итоги?', with: Date.today.strftime('%d.%m.%Y')
-    select 'Итоги дня', from: 'Что пишем?'
-    fill_in 'wmd-input-content', with: 'lipsum5'
-    check 'post_visible'
-
-    click_on 'Сохранить'
-
-    visit public_posts_path
-
-    expect(page).to have_content 'lipsum5'
   end
 end

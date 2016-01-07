@@ -2,17 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    .col-sm-6
-      = f.input :created_at, as: :string, label: 'Какому дню подводим итоги?'
-      br
-    .col-sm-6
-      = f.input :status, collection: available_post_types.invert, label: 'Что пишем?', include_blank: false
-      br
     .col-sm-12
-      = f.input :content, as: :pagedown, label: 'Как прошел день?', input_html: { preview: true, rows: 10 }
+      = f.input :content, as: :pagedown, placeholder: 'Здесь можно что-нибудь написать :)', input_html: { preview: true, rows: 10 }
 
-  .col-sm-6
-    = f.input :visible, label: 'Сделать запись публичной?'
   .col-sm-6
     br
     = f.button :submit, 'Сохранить', class: 'btn btn-success pull-right'
