@@ -8,6 +8,8 @@ describe 'Posts' do
 
   before(:each) do
     sign_in_with(user.email, user.password)
+    time = Time.local(2016, 12, 31, 10, 5, 0)
+    Timecop.travel(time)
     populate_year_of_posts
   end
 
@@ -33,7 +35,6 @@ describe 'Posts' do
 
   it 'shows seven posts when looking for previous week' do
     visit week_path(year, week)
-
     expect(page).to have_selector('h4', count: 7)
   end
 
@@ -95,6 +96,7 @@ describe 'Posts' do
   end
 
   pending 'shows only weekly posts if such status chosen' do
+    skip
     visit month_path(year, month)
     date = Date.new(year, month)
 
