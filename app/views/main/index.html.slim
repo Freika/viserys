@@ -1,5 +1,5 @@
-.col-sm-8
-  h3 Сворачивающиеся дневники
+.col-sm-8.col-sm-offset-2
+  h1 Сворачивающиеся дневники
 
   p Суть предельно проста: ежедневно ты пишешь, как прошел твой день, а в конце недели просматриваешь итоги будних дней и подводишь итог всей неделе. А в конце месяца просматриваешь итоги всех четырех недель и подводишь итоги месяца. И, возможно, меняешь что-то в своей жизни, если тебя не устраивает то, как выглядят подводимые тобой итоги.
 
@@ -14,15 +14,5 @@
 
   .text-center
     = just_paginate(@news)
-
-.col-sm-4
-  h3.text-center Лента событий
-  .col-sm-12.activities
-    -  @activities.each do |activity|
-      .activity.text-center
-        => activity.owner.name if activity.owner
-        => render_activity activity
-        => "в #{activity.created_at.strftime('%H:%M')}"
-        hr
 
 - title "Сворачивающиеся дневники"

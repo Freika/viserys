@@ -11,12 +11,13 @@ module PostsHelpers
         status = 'daily'
       end
 
-      Post.create(content: 'Lorem ipsum dolor sit amet,
-                    consectetur adipisicing elit. Impedit, non.',
-                  status: status,
-                  user: User.first,
-                  created_at: date - 5.hours,
-                  updated_at: date - 5.hours)
+      Post.create(
+        content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        status: status,
+        user: User.first,
+        created_at: date - 5.hours,
+        updated_at: date - 5.hours
+      )
     end
   end
 end
