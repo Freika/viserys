@@ -15,5 +15,6 @@ module Viserys
     config.time_zone = 'Moscow'
     config.i18n.default_locale = :ru
     config.active_record.raise_in_transactional_callbacks = true
+    config.middleware.use Rack::Attack
   end
 end

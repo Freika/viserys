@@ -17,7 +17,7 @@ describe 'Posts' do
     visit posts_path
     click_on 'Новая запись'
 
-    fill_in 'wmd-input-content', with: 'lipsum5'
+    fill_in 'post_content', with: 'lipsum5'
 
     click_on 'Сохранить'
 
